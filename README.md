@@ -1,0 +1,1 @@
+This is a repository where I play around with Direct3D. Will upload upload samples from various sources and modify them. I really want to get my own to-the-metal renderer done!
