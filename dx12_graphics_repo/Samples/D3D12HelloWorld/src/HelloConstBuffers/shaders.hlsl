@@ -46,7 +46,7 @@ PSInput VSMain(float4 position : POSITION, float4 color : COLOR)
 
 float4 PSMain(PSInput input) : SV_TARGET
 {
-    float texBufferCoord = screensize[0] * input.position.y + input.position.x;
+    int texBufferCoord = (int)screensize[0] * (int)input.position.y + (int)input.position.x;
 
     BufferInput newInput = mybuf[texBufferCoord];
 
@@ -57,7 +57,7 @@ float4 PSMain(PSInput input) : SV_TARGET
         newInput.isUsed = 1.0;
         newInput.colorItems[0].color.x++;
 
-        gColor = 1.0f;
+        gColor = 0.2f;
     }
     else
     {

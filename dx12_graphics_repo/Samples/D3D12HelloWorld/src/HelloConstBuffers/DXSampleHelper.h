@@ -65,7 +65,7 @@ inline HRESULT ReadDataFromFile(LPCWSTR filename, byte** data, UINT* size)
 
 	if (file.Get() == INVALID_HANDLE_VALUE)
 	{
-		throw new std::exception();
+		throw std::exception();
 	}
 
 	FILE_STANDARD_INFO fileInfo = { 0 };
@@ -76,12 +76,12 @@ inline HRESULT ReadDataFromFile(LPCWSTR filename, byte** data, UINT* size)
 		sizeof(fileInfo)
 		))
 	{
-		throw new std::exception();
+		throw std::exception();
 	}
 
 	if (fileInfo.EndOfFile.HighPart != 0)
 	{
-		throw new std::exception();
+		throw std::exception();
 	}
 
 	*data = reinterpret_cast<byte*>(malloc(fileInfo.EndOfFile.LowPart));
@@ -95,7 +95,7 @@ inline HRESULT ReadDataFromFile(LPCWSTR filename, byte** data, UINT* size)
 		nullptr
 		))
 	{
-		throw new std::exception();
+		throw std::exception();
 	}
 
 	return S_OK;
