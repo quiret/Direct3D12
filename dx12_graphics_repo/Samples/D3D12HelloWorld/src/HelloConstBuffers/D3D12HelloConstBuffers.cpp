@@ -312,8 +312,15 @@ void D3D12HelloConstBuffers::LoadAssets()
 
         size_t texBufSize = ( sizeof(DepthColorSortSample) * this->m_width * this->m_height + 255 ) & ~255;
 
+        D3D12_HEAP_PROPERTIES heapProps;
+        heapProps.Type = D3D12_HEAP_TYPE_CUSTOM;
+        heapProps.CreationNodeMask = 0;
+        heapProps.MemoryPoolPreference = D3D12_MEMORY_POOL_L0;
+        heapProps.CPUPageProperty = D3D12_CPU_PAGE_PROPERTY_WRITE_BACK;
+        heapProps.VisibleNodeMask = 0;
+
         ThrowIfFailed(m_device->CreateCommittedResource(
-            &CD3DX12_HEAP_PROPERTIES(D3D12_HEAP_TYPE_UPLOAD),
+            &heapProps,
             D3D12_HEAP_FLAG_NONE,
             &CD3DX12_RESOURCE_DESC::Buffer(texBufSize, D3D12_RESOURCE_FLAG_ALLOW_UNORDERED_ACCESS),
             D3D12_RESOURCE_STATE_GENERIC_READ,
